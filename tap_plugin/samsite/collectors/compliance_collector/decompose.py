@@ -436,7 +436,7 @@ def decompose_compliance_artifact(
 
         try:
             content: Any = json.loads(body.decode("utf-8"))
-        except UnicodeDecodeError, json.JSONDecodeError:
+        except (UnicodeDecodeError, json.JSONDecodeError):
             content = body.decode("utf-8", errors="replace")
     else:
         # IIW is CSV — stored as text (JSONField can hold a string).
