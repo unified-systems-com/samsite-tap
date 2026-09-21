@@ -48,7 +48,15 @@ dependencies = [
     "tap-plugin-roscale",
     "tap-plugin-fedramp-20x-ksi",
     "tap-plugin-computing-core>=0.4.0,<0.5",
-    "tap-plugin-compliance-core>=0.3.0,<0.4",
+    # Raised to 0.4.0 (was >=0.3.0,<0.4): github_core (current release v0.12.0, an
+    # unbounded dep above) pins compliance-core>=0.4.0,<0.5, which is disjoint from
+    # the old <0.4 ceiling here — no version of compliance-core satisfied both at
+    # once. v0.4.0 is additive over v0.3.0 (source/source_key identity columns +
+    # NATURAL_KEY declarations, Issue# 8 - tap-plugin-compliance-core); this plugin
+    # only references compliance_core entity/edge-type strings by name
+    # (compliance_core__compliance_artifact, SCOPED_TO_COMPLIANCE_BOUNDARY__compliance_core),
+    # none of which changed.
+    "tap-plugin-compliance-core>=0.4.0,<0.5",
     "tap-plugin-identity-core",
 ]
 
