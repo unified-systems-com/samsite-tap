@@ -15,7 +15,7 @@
       "note": "Fine-grained GitHub PAT, read-only (Metadata + Contents + Actions), scoped to only the signing repo(s) listed in the envelope's repos field. Administration read only if runner nodes are wanted."
     }
   ],
-  "description": "Samsite demo — stand a fresh instance up end-to-end: seed the plugin GRIFT (AWS/GitHub/KSI/samsite pages + schedules), then fire the collectors that pull the live world in. This record ships IN the samsite plugin (tap_plugin/samsite/boot/, req-boot-bootstrap-records-in-package) and is fetched by pointer: spawn --from git+https://github.com/unified-systems-com/tap-plugin-samsite@<rev>#samsite. Every install entry is git-sourced at a pinned immutable tag from its own public repo (anonymous installs; a private fork names a credential per req-plugin-arch-source-secret-5), including samsite itself — the app-of-apps self-reference (req-boot-bootstrap-stage0-3): the carrier you fetch the record FROM and the samsite version it INSTALLS are deliberately independent coordinates. required_secrets rides the record so preflight provisioning works wherever it is fetched from (req-boot-required-secrets-6). Seed order is INSTALLED_APPS order; collector order matters: samsite-compliance reads aws_account nodes (boto3) AND content-matches github_workflow nodes (github_core), so both must run before it. Install order lists substrate (identity_core, compliance_core) before its consumers so git-sourced dependency resolution finds them already installed, not on an index.",
+  "description": "Samsite demo \u2014 stand a fresh instance up end-to-end: seed the plugin GRIFT (AWS/GitHub/KSI/samsite pages + schedules), then fire the collectors that pull the live world in. This record ships IN the samsite plugin (tap_plugin/samsite/boot/, req-boot-bootstrap-records-in-package) and is fetched by pointer: spawn --from git+https://github.com/unified-systems-com/tap-plugin-samsite@<rev>#samsite. Every install entry is git-sourced at a pinned immutable tag from its own public repo (anonymous installs; a private fork names a credential per req-plugin-arch-source-secret-5), including samsite itself \u2014 the app-of-apps self-reference (req-boot-bootstrap-stage0-3): the carrier you fetch the record FROM and the samsite version it INSTALLS are deliberately independent coordinates. required_secrets rides the record so preflight provisioning works wherever it is fetched from (req-boot-required-secrets-6). Seed order is INSTALLED_APPS order; collector order matters: samsite-compliance reads aws_account nodes (boto3) AND content-matches github_workflow nodes (github_core), so both must run before it. Install order lists substrate (identity_core, compliance_core) before its consumers so git-sourced dependency resolution finds them already installed, not on an index.",
   "install": {
     "plugins": [
       {
@@ -46,7 +46,7 @@
           "url": "https://github.com/unified-systems-com/tap-plugin-roscale",
           "rev": "v0.2.0"
         },
-        "note": "Package-mode (tap_plugin.roscale). Install-only: registers the OSCAL workbench panel types samsite consumes; no grift seed, no collector, but samsite imports it at ready() — must be installed. Git-sourced from its own repo at v0.2.0 (public repo since 2026-08-08; anonymous git-install)."
+        "note": "Package-mode (tap_plugin.roscale). Install-only: registers the OSCAL workbench panel types samsite consumes; no grift seed, no collector, but samsite imports it at ready() \u2014 must be installed. Git-sourced from its own repo at v0.2.0 (public repo since 2026-08-08; anonymous git-install)."
       },
       {
         "slug": "identity_core",
@@ -94,9 +94,10 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/tap-plugin-compliance-core",
-          "rev": "v0.3.0"
+          "rev": "v0.4.0",
+          "commit": "e5464e4dd87758d41552d45df42c0303b0de48e3"
         },
-        "note": "Package-mode (tap_plugin.compliance_core). Install-only substrate: regime-agnostic compliance vocabulary (artifact/context/evidence/finding/exception/boundary). samsite's compliance_collector creates compliance_core__compliance_artifact nodes; fedramp_20x_ksi depends on it. v0.3.0 carries the CITES_COMPLIANCE_EVIDENCE / CARRIES_COMPLIANCE_FINDING edge renames. No GRIFT population seed. Git-sourced from its own repo at v0.3.0 (public repo since 2026-08-08; anonymous git-install)."
+        "note": "Package-mode (tap_plugin.compliance_core). Install-only substrate: regime-agnostic compliance vocabulary (artifact/context/evidence/finding/exception/boundary). samsite's compliance_collector creates compliance_core__compliance_artifact nodes; fedramp_20x_ksi depends on it. v0.4.0 carries the CITES_COMPLIANCE_EVIDENCE / CARRIES_COMPLIANCE_FINDING edge renames. No GRIFT population seed. Git-sourced from its own repo at v0.4.0 (public repo since 2026-08-08; anonymous git-install)."
       },
       {
         "slug": "fedramp_20x_ksi",
@@ -116,7 +117,7 @@
           "url": "https://github.com/unified-systems-com/tap-plugin-samsite",
           "rev": "v0.2.3"
         },
-        "note": "Package-mode (tap_plugin.samsite). The demo integration surface; seeded in population. DEPENDS ON compliance_core/github_core/identity_core/roscale/sigstore_core at import time + aws_core nodes at runtime — listed last so its cross-plugin deps install first. Its collectors ARE fired in this profile (pull the live world in)."
+        "note": "Package-mode (tap_plugin.samsite). The demo integration surface; seeded in population. DEPENDS ON compliance_core/github_core/identity_core/roscale/sigstore_core at import time + aws_core nodes at runtime \u2014 listed last so its cross-plugin deps install first. Its collectors ARE fired in this profile (pull the live world in)."
       },
       {
         "slug": "grid_fixtures",
@@ -126,7 +127,7 @@
           "url": "https://github.com/unified-systems-com/tap-plugin-grid-fixtures",
           "rev": "v0.3.0"
         },
-        "note": "Package-mode (tap_plugin.grid_fixtures). Install-only: the neutral grid_fixtures__* node/edge vocabulary the core suites build fixtures from. No GRIFT seed, no cross-plugin deps. (gryphon_playground, which depends_on it, is NOT installed in this customer-demo profile — the Gryphon test corpus stands up via its own in-package boot records selected by a bootstrap pointer.)"
+        "note": "Package-mode (tap_plugin.grid_fixtures). Install-only: the neutral grid_fixtures__* node/edge vocabulary the core suites build fixtures from. No GRIFT seed, no cross-plugin deps. (gryphon_playground, which depends_on it, is NOT installed in this customer-demo profile \u2014 the Gryphon test corpus stands up via its own in-package boot records selected by a bootstrap pointer.)"
       }
     ]
   },
