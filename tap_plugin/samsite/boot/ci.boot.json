@@ -109,7 +109,7 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/samsite-tap",
-          "rev": "v0.2.4"
+          "rev": "v0.2.5"
         }
       }
     ]
