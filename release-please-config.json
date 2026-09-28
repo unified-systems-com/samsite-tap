@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "python",
+  "include-component-in-tag": false,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "packages": {
+    ".": {
+      "package-name": "tap-plugin-samsite",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "tap_plugin/samsite/tap-plugin.toml"
+        },
+        {
+          "type": "json",
+          "path": "tap_plugin/samsite/boot/ci.boot.json",
+          "jsonpath": "$.install.plugins[?(@.slug=='samsite')].source.rev"
+        },
+        {
+          "type": "json",
+          "path": "tap_plugin/samsite/boot/samsite.boot.json",
+          "jsonpath": "$.install.plugins[?(@.slug=='samsite')].source.rev"
+        }
+      ]
+    }
+  }
+}

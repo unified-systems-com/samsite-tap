@@ -109,5 +109,5 @@ Behavior is specified in `specs/`:
 - the collector schedules.
 
 It does **not** own AWS resource models, AWS edges, or the boto3 collector — those
-live in [`aws_core`](https://github.com/unified-systems-com/tap-plugin-aws-core). It does not own the
+live in [`aws_core`](https://github.com/unified-systems-com/aws-core-tap). It does not own the
 KSI catalog either; that is `fedramp_20x_ksi`.
