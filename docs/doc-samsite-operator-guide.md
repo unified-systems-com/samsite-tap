@@ -17,7 +17,7 @@ deployment on the grid:
 mkdir -p ~/tap-sessions
 git clone git@github.com:unified-systems-com/tap.git ~/tap-sessions/main
 cd ~/tap-sessions/main
-scripts/spawn-session.sh sam --from git+https://github.com/unified-systems-com/tap-plugin-samsite@v0.2.3#samsite
+scripts/spawn-session.sh sam --from git+https://github.com/unified-systems-com/samsite-tap@v0.2.3#samsite
 ```
 
 The boot profile ships **inside this plugin** as an in-package boot record — the
