@@ -1,9 +1,10 @@
 manifest_version = "0"
 plugin_version = "0.2.4" # x-release-please-version
-# The floor is the highest floor in the ci record's closure: compliance_core v0.4.0
-# (pinned in boot/ci.boot.json) declares requires_tap = ">=0.2.0", so a samsite floor
-# below 0.2.0 names a core that cannot load its own dependency (req-tap-plugin-extdev-repo-ci-7).
-requires_tap = ">=0.2.0"
+# Never below the highest floor in the ci record's closure (compliance_core v0.4.0, pinned in
+# boot/ci.boot.json, declares ">=0.2.0"; req-tap-plugin-extdev-repo-ci-7). Raised to 0.3.0
+# because plugin CI boots core at this floor, and tap before 0.3.0 cannot boot with FIPS on
+# current Wolfi packages (no hashlib md5; the tap#933 apk pins are in 0.3.0).
+requires_tap = ">=0.3.0"
 slug = "samsite"
 name = "Samsite"
 description = "Projection plugin for George's live reproduction of Sam Aydlette's static site + FedRAMP 20x compliance machinery (target of the Sam demo)."
