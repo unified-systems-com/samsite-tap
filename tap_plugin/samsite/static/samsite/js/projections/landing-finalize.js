@@ -343,7 +343,7 @@ export async function execute(context) {
     // right of the github.com box; Readers / george sit the same gap outside the
     // FedRAMP boundary, aligned with the system part they touch.
     const OUTSIDE_GAP = 130;
-    const userByName = (re) => cy.nodes('[entity_type="computing_core__user"]').filter((n) => re.test(n.data("label") || ""));
+    const userByName = (re) => cy.nodes('[entity_type="identity_core__human"]').filter((n) => re.test(n.data("label") || ""));
     const boundary = cy.nodes('[entity_type="compliance_core__compliance_boundary"]').first();
     const bndBB = boundary.nonempty() ? boundary.boundingBox() : null;
     // Readers → left of the boundary, level with the CloudFront CDN they read from.

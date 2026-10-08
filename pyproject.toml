@@ -57,7 +57,9 @@ dependencies = [
     # (compliance_core__compliance_artifact, SCOPED_TO_COMPLIANCE_BOUNDARY__compliance_core),
     # none of which changed.
     "tap-plugin-compliance-core>=0.4.0,<0.5",
-    "tap-plugin-identity-core",
+    # Bounded from 0.1.3, the release that ships identity_core__human: the people seed
+    # (grift/users.grift.json) and the landing MATCH name that type by string (samsite-tap#33).
+    "tap-plugin-identity-core>=0.1.3,<0.2",
 ]
 
 [project.entry-points."tap.plugins"]

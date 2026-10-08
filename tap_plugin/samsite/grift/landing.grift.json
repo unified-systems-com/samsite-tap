@@ -6,15 +6,15 @@
   "batches": [
     {
       "batch_entity": {
-        "entity_id": "019e843a-a8a1-753b-b763-83eab5b748b9",
+        "entity_id": "01a11967-8a0b-7142-a270-c77c35f793b6",
         "entity_type": "batch",
-        "name": "Samsite landing v0.1.9",
+        "name": "Samsite landing v0.2.0",
         "dimensions": {}
       },
       "batch_node": {
         "source": "plugins.samsite",
-        "name": "Samsite landing v0.1.9",
-        "description": "Landing page: cytoscape graph projection of the samsite deployment (account 180731181784). v0.1.5 is the merge of two parallel lines onto one batch: (a) the signed /.well-known/ artifacts on the board — the seed search matches ksi_signal / vdr_report / compliance_artifact, and landing-finalize.js prunes each to the latest snapshot per kind and styles them as file cards; (b) the deploy→KEV-fetch + human-actor story — the search also matches web_host / web_document (CISA host + KEV catalog, kev-fetch.grift.json) and user (the three actors Readers / george / Sam, users.grift.json). web_host / web_document / user / the compliance file types carry no per-model tags, so they are reached by explicit per-label MATCHes (like the GitHub lane), not the Project=samsite tag scan. Fresh batch_entity_id (supersedes both 019e73fb-... and 019e73fe-...) so any session seeded from either parent re-applies the combined search; the skip-if-exists guard is batch-id-keyed. The Rekor entries collapse into a stack (tap_viz stack primitive) in landing-finalize.js. v0.1.7 adds MATCH (gapp:github_core__github_app) so the Dependabot github_app (reclassified from a workflow by the collector) renders — the finalize pass parents it to the github.com platform compound. v0.1.8 existed as two parallel lines on separate branches, reconciled here in v0.1.9: (a) removed four orphaned edges left behind when the samsite-bootstrap-layout + its three samsite-bootstrap-* arrangements were retired (commit 43f0cd8) — the USES_LAYOUT edge into the layout and three USES_ARRANGEMENT edges out of it were never removed and dangled on a fresh seed; (b) added nav_rules to the graph panel config (interpreted generically by tap_viz graph_panel → display.tap_viz.nav_url → single-tap navigation in panel-graph.js): signed artifacts (compliance_artifact by kind / ksi_signal / vdr_report) open their workbench viewer pages pinned by entity_id, and GitHub nodes (repository / account / platform / workflow / app) open their html_url on github.com in a new tab. v0.1.9 merges both with a fresh batch_entity_id superseding 019e7908-... (a) and 019e7e65-... (b) so any grid seeded from either parent re-applies the combined batch."
+        "name": "Samsite landing v0.2.0",
+        "description": "Landing page: cytoscape graph projection of the samsite deployment (account 180731181784). v0.1.5 is the merge of two parallel lines onto one batch: (a) the signed /.well-known/ artifacts on the board — the seed search matches ksi_signal / vdr_report / compliance_artifact, and landing-finalize.js prunes each to the latest snapshot per kind and styles them as file cards; (b) the deploy→KEV-fetch + human-actor story — the search also matches web_host / web_document (CISA host + KEV catalog, kev-fetch.grift.json) and user (the three actors Readers / george / Sam, users.grift.json). web_host / web_document / user / the compliance file types carry no per-model tags, so they are reached by explicit per-label MATCHes (like the GitHub lane), not the Project=samsite tag scan. Fresh batch_entity_id (supersedes both 019e73fb-... and 019e73fe-...) so any session seeded from either parent re-applies the combined search; the skip-if-exists guard is batch-id-keyed. The Rekor entries collapse into a stack (tap_viz stack primitive) in landing-finalize.js. v0.1.7 adds MATCH (gapp:github_core__github_app) so the Dependabot github_app (reclassified from a workflow by the collector) renders — the finalize pass parents it to the github.com platform compound. v0.1.8 existed as two parallel lines on separate branches, reconciled here in v0.1.9: (a) removed four orphaned edges left behind when the samsite-bootstrap-layout + its three samsite-bootstrap-* arrangements were retired (commit 43f0cd8) — the USES_LAYOUT edge into the layout and three USES_ARRANGEMENT edges out of it were never removed and dangled on a fresh seed; (b) added nav_rules to the graph panel config (interpreted generically by tap_viz graph_panel → display.tap_viz.nav_url → single-tap navigation in panel-graph.js): signed artifacts (compliance_artifact by kind / ksi_signal / vdr_report) open their workbench viewer pages pinned by entity_id, and GitHub nodes (repository / account / platform / workflow / app) open their html_url on github.com in a new tab. v0.1.9 merges both with a fresh batch_entity_id superseding 019e7908-... (a) and 019e7e65-... (b) so any grid seeded from either parent re-applies the combined batch. v0.2.0 (samsite-tap#33): the people are identity_core `human` nodes, so the seed search matches MATCH (u:identity_core__human) instead of computing_core `user`, which computing_core retired (computing-core-tap#27); fresh batch_entity_id so a grid seeded from v0.1.9 re-applies the search."
       },
       "nodes": [
         {
@@ -46,7 +46,7 @@
                 "MATCH (cart:compliance_core__compliance_artifact)",
                 "MATCH (wh:computing_core__web_host)",
                 "MATCH (wd:computing_core__web_document)",
-                "MATCH (u:computing_core__user)",
+                "MATCH (u:identity_core__human)",
                 "MATCH (n)",
                 "WHERE n.data.tags.Project = \"samsite\""
               ]
