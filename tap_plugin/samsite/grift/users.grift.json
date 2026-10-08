@@ -6,57 +6,57 @@
   "batches": [
     {
       "batch_entity": {
-        "entity_id": "019e73fe-33ae-7375-ba2e-17710feab3e5",
+        "entity_id": "01a11967-897f-748c-947b-8a569774b2dc",
         "entity_type": "batch",
-        "name": "Samsite users seed v0.1.0",
+        "name": "Samsite users seed v0.2.0",
         "dimensions": {}
       },
       "batch_node": {
         "source": "plugins.samsite",
-        "name": "Samsite users seed v0.1.0",
-        "description": "Seeds the human actors in the samsite story as computing_core `user` nodes: Readers (the site's audience), george (the operator reproducing and modeling the system in TAP), and Sam (Sam Aydlette, author of the original samaydlette.com system). The `user` type carries no per-model tags field, so the landing search reaches these via an explicit MATCH (u:computing_core__user) rather than the Project=samsite tag scan. Edges/roles and projection placement are intentionally not seeded here — the visualization session decides where these sit on the projection."
+        "name": "Samsite users seed v0.2.0",
+        "description": "Seeds the people in the samsite story as identity_core `human` nodes: george (the operator reproducing and modeling the system in TAP) and Sam (Sam Aydlette, author of the original samaydlette.com system). A human is found again by its `handle` (identity_core's natural key), so each carries one. Each carries the dimension samsite.story = actor, which this batch also seeds as a dimension node. The landing search scopes its MATCH (u:identity_core__human) to that dimension, so another plugin's humans on the same grid do not appear on the samsite landing. Edges/roles and projection placement are intentionally not seeded here. v0.2.0: moved from computing_core `user` to identity_core `human` (samsite-tap#33): computing_core retired `user`, whose meaning duplicated `human` (computing-core-tap#27). The nodes have fresh entity ids because a row cannot change type. On a grid seeded from v0.1.0, the old `user` rows stay until computing_core's 0.5 migration deletes them, and the landing no longer matches them. The v0.1.0 'Readers' node is dropped: it was an audience, not a person. `human` has no description field, so the per-person notes live here: george reproduces and models the samsite system in TAP; Sam Aydlette wrote the original samaydlette.com system and its FedRAMP 20x compliance machinery."
       },
       "nodes": [
         {
           "entity": {
-            "entity_id": "019e73fe-33af-72c4-b998-1b69b1d5ba33",
-            "entity_type": "computing_core__user",
-            "name": "Readers",
+            "entity_id": "01a11c0a-8da1-77b0-9218-7abad17780e6",
+            "entity_type": "dimension",
+            "name": "samsite.story",
             "dimensions": {
-              "tap.computing": "identity"
+              "tap.meta": "dimension"
             }
           },
           "node": {
-            "name": "Readers",
-            "description": "The readers/audience of the site — visitors who consume samaydlette.com and its published compliance artifacts."
+            "name": "samsite.story",
+            "description": "Marks the entities that belong to the samsite story itself, as opposed to anything else that happens to share the grid. Value `actor` marks the people samsite seeds (george, Sam), so that the samsite landing search matches only those identity_core__human nodes and not every human on the grid. The AWS side is scoped by its tags.Project = samsite; a human has no tags field, so this dimension does that job for the people."
           }
         },
         {
           "entity": {
-            "entity_id": "019e73fe-33af-72c4-b998-1b6a014609e9",
-            "entity_type": "computing_core__user",
+            "entity_id": "01a11967-8b3e-742a-884c-d65d6f4c4f49",
+            "entity_type": "identity_core__human",
             "name": "george",
             "dimensions": {
-              "tap.computing": "identity"
+              "samsite.story": "actor"
             }
           },
           "node": {
-            "name": "george",
-            "description": "The operator reproducing and modeling the samsite system in TAP."
+            "handle": "samsite-george",
+            "name": "george"
           }
         },
         {
           "entity": {
-            "entity_id": "019e73fe-33af-72c4-b998-1b6bc5ec7e91",
-            "entity_type": "computing_core__user",
+            "entity_id": "01a11967-8beb-768a-b8d5-da2fb045eae5",
+            "entity_type": "identity_core__human",
             "name": "Sam",
             "dimensions": {
-              "tap.computing": "identity"
+              "samsite.story": "actor"
             }
           },
           "node": {
-            "name": "Sam",
-            "description": "Sam Aydlette — author of the original samaydlette.com system and its FedRAMP 20x compliance machinery."
+            "handle": "samsite-sam",
+            "name": "Sam"
           }
         }
       ],
