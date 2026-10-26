@@ -9,8 +9,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/identity-core-tap",
-          "rev": "v0.1.3",
-          "commit": "53da388b6f47590090ef3bdc8d98731acff4c8e2"
+          "rev": "v0.1.6",
+          "commit": "11f087954ff5d06792abc4a3994d7eae77bbcb5b"
         }
       },
       {
@@ -19,8 +19,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/git-core-tap",
-          "rev": "v0.1.0",
-          "commit": "efa983a582eaef7d16e27daa50a68aeaef7c56de"
+          "rev": "v0.1.1",
+          "commit": "9e941010f155f1223340ff404d7cbd14cd1db1e0"
         }
       },
       {
@@ -29,8 +29,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/compliance-core-tap",
-          "rev": "v0.4.0",
-          "commit": "e5464e4dd87758d41552d45df42c0303b0de48e3"
+          "rev": "v0.8.10",
+          "commit": "1661fa3accdf68d3d911b70df14e7d9ce4e542a7"
         }
       },
       {
@@ -39,8 +39,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/sigstore-core-tap",
-          "rev": "v0.4.0",
-          "commit": "a061370ddfad0d5f2f8c0b00b9b795a8de5ccd12"
+          "rev": "v0.5.1",
+          "commit": "b368fa2d4b53a7b4bc8247d9598beb059d31287e"
         }
       },
       {
@@ -59,8 +59,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/computing-core-tap",
-          "rev": "v0.4.0",
-          "commit": "c5ac2e8250575a7c423af560441d7f5f2749c4e2"
+          "rev": "v0.9.1",
+          "commit": "43f1f09bf5ce8a1b51290d9cdb1f9cab8ea0e166"
         }
       },
       {
@@ -69,8 +69,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/aws-core-tap",
-          "rev": "v0.5.0",
-          "commit": "d93ca2ee02140aa40134a64025743dc6e381ffc8"
+          "rev": "v0.8.0",
+          "commit": "9b3496c38d23aafd29feadbd68b2ea640dce4225"
         }
       },
       {
@@ -79,8 +79,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/administrivia-tap",
-          "rev": "v0.1.1",
-          "commit": "8348716059e8b635bc8cf30608dd94d0239bf0f9"
+          "rev": "v0.2.2",
+          "commit": "7656f2912f8355a5129ef299ae5e99d8b61821ba"
         }
       },
       {
@@ -89,8 +89,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/github-core-tap",
-          "rev": "v0.6.0",
-          "commit": "99a0e8f359c1d0b1a784dd1c1a41a1dcebc46893"
+          "rev": "v0.14.0",
+          "commit": "e94371a9c3401175b962c1e9b397979b0baeab90"
         }
       },
       {
@@ -99,8 +99,8 @@
         "source": {
           "type": "git",
           "url": "https://github.com/unified-systems-com/fedramp-20x-ksi-tap",
-          "rev": "v0.3.1",
-          "commit": "3480c74dc8e95d410e8b05fc426157a5574f1874"
+          "rev": "v0.4.2",
+          "commit": "5069b9d53b002a7f0626fad377f3abea0b193df6"
         }
       },
       {
