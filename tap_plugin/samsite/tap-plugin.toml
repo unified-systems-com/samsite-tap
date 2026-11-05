@@ -4,7 +4,7 @@ plugin_version = "0.2.4" # x-release-please-version
 # boot/ci.boot.json, declares ">=0.2.0"; req-tap-plugin-extdev-repo-ci-7). Raised to 0.3.0
 # because plugin CI boots core at this floor, and tap before 0.3.0 cannot boot with FIPS on
 # current Wolfi packages (no hashlib md5; the tap#933 apk pins are in 0.3.0).
-requires_tap = ">=0.3.0"
+requires_tap = ">=0.3.1"
 slug = "samsite"
 name = "Samsite"
 description = "Projection plugin for George's live reproduction of Sam Aydlette's static site + FedRAMP 20x compliance machinery (target of the Sam demo)."
