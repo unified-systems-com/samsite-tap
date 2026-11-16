@@ -53,7 +53,7 @@ aws-collector-schedule = "grift/aws-collector-schedule.grift.json"
 [[boot.records]]
 name = "samsite"
 description = "Samsite demo end-to-end: full plugin set git-pinned + population (GRIFT seeds, then boto3/github/KSI/samsite-compliance collectors); required_secrets declared for preflight provisioning."
-sha256 = "14f8bda39aa3200e0d1c611aeae0abba6395c61b5d4413362906cd0f179b3a6d"
+sha256 = "886d57a7d08894f0a20019e76f08190e148e9310c9ba1c2f96eedc10b7e76d9f"
 
 [[boot.records]]
 name = "ci"
