@@ -47,7 +47,7 @@ dependencies = [
     "github-core-tap>=0.13.0,<0.15",
     "roscale-tap>=0.2.2",
     "fedramp-20x-ksi-tap>=0.4.0",
-    "computing-core-tap>=0.5.0,<0.10",
+    "computing-core-tap>=0.5.0,<0.11",
     # Raised to 0.4.0 (was >=0.3.0,<0.4): github_core (current release v0.12.0, an
     # unbounded dep above) pins compliance-core>=0.4.0,<0.5, which is disjoint from
     # the old <0.4 ceiling here — no version of compliance-core satisfied both at
