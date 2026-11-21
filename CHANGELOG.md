@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.6](https://github.com/unified-systems-com/samsite-tap/compare/v0.2.5...v0.2.6) (2026-11-20)
+
+
+### Bug Fixes
+
+* **boot:** the product record names samsite v0.2.5 at its own commit ([1456626](https://github.com/unified-systems-com/samsite-tap/commit/14566269cef2e968806e8086c1d62363f4b1b66b))
+* **boot:** the product record names samsite v0.2.5 at its own commit ([65ea52e](https://github.com/unified-systems-com/samsite-tap/commit/65ea52ecf087bc2658910967ff7b95bb8996f339))
+
 ## [0.2.5](https://github.com/unified-systems-com/samsite-tap/compare/v0.2.4...v0.2.5) (2026-11-16)
 
 

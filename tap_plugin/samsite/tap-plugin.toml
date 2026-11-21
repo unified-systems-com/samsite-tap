@@ -1,5 +1,5 @@
 manifest_version = "0"
-plugin_version = "0.2.5" # x-release-please-version
+plugin_version = "0.2.6" # x-release-please-version
 # Never below the highest floor in the ci record's closure (compliance_core v0.4.0, pinned in
 # boot/ci.boot.json, declares ">=0.2.0"; req-tap-plugin-extdev-repo-ci-7). Raised to 0.3.0
 # because plugin CI boots core at this floor, and tap before 0.3.0 cannot boot with FIPS on
@@ -53,9 +53,9 @@ aws-collector-schedule = "grift/aws-collector-schedule.grift.json"
 [[boot.records]]
 name = "samsite"
 description = "Samsite demo end-to-end: full plugin set git-pinned + population (GRIFT seeds, then boto3/github/KSI/samsite-compliance collectors); required_secrets declared for preflight provisioning."
-sha256 = "886d57a7d08894f0a20019e76f08190e148e9310c9ba1c2f96eedc10b7e76d9f"
+sha256 = "0fe9cd39656e858afbf8745d950bdce5ef256d3716543e700c03013169cfcf10"
 
 [[boot.records]]
 name = "ci"
 description = "RESERVED NAME (req-boot-bootstrap-ci-record): the stack this plugin's own tests run in — depends_on closure + self, offline, credential-free. The consumer flips self to editable."
-sha256 = "4b3ff80014ae6e2cb03b260fc5f7960c08d8d75ae467cb0bc7a0f9a9536b1f3e"
+sha256 = "8d9fb9599e1b5392b2a6a5d17509ed20a9d0ad10853ee09147efc169d397dc8a"
