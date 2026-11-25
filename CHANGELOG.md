@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.7](https://github.com/unified-systems-com/samsite-tap/compare/v0.2.6...v0.2.7) (2026-11-25)
+
+
+### Bug Fixes
+
+* **grift:** drop retired landing_page and HOSTS_DOCUMENT records; restamp to format "1" ([05788f5](https://github.com/unified-systems-com/samsite-tap/commit/05788f523eafd791e3b25efd3960cc0aa5795c1a))
+* **grift:** drop retired landing_page and HOSTS_DOCUMENT records; restamp to format "1" ([166deca](https://github.com/unified-systems-com/samsite-tap/commit/166deca4a37bfaf4859f4329153706e004d62fa6))
+
 ## [0.2.6](https://github.com/unified-systems-com/samsite-tap/compare/v0.2.5...v0.2.6) (2026-11-20)
 
 
