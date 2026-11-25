@@ -46,7 +46,7 @@ collector is its first proving instance.
 | req-samsite-collector-schedule | [Daily Schedule](#daily-schedule) | Proposed | Registered to run daily through the `tap_cares` scheduler |
 | req-samsite-collector-identity | [Identity And Emission History](#identity-and-emission-history) | Proposed | Components dedup across emissions; signals/reports/findings per-emission |
 | req-samsite-collector-boundary-membership | [Authorization Boundary Membership (v0 KLUDGE)](#authorization-boundary-membership-v0-kludge) | Proposed | **KLUDGE** — blanket-scope every `aws_account` into the samsite boundary; replace with curated membership |
-| req-samsite-collector-kev-fetch | [CISA KEV Fetch Process](#cisa-kev-fetch-process) | Proposed | Collector emits `FETCHES_DOCUMENT` (deploy workflow → seeded KEV catalog); host/doc/`HOSTS_DOCUMENT` seeded statically |
+| req-samsite-collector-kev-fetch | [CISA KEV Fetch Process](#cisa-kev-fetch-process) | Proposed | Collector emits `FETCHES_DOCUMENT` (deploy workflow → seeded KEV catalog); host and document seeded statically. Both edge types are retired (computing-core#25), see the section |
 | req-samsite-collector-nongoals | [v0 Non-Goals](#v0-non-goals) | Proposed | Generic web collector archetype, deferred |
 
 ---
@@ -298,11 +298,15 @@ The story is three nodes and two edges:
 github_workflow (deploy) ─FETCHES_DOCUMENT─▶ web_document (CISA KEV catalog) ◀─HOSTS_DOCUMENT─ web_host (CISA)
 ```
 
+> **Retired edges (computing-core#25).** computing_core retired `FETCHES_DOCUMENT` and
+> `HOSTS_DOCUMENT` on 2026-10-02 (its migration 0005 deletes their rows): an HTTP interaction
+> will be a verb node with its own edges, not one edge. `kev-fetch.grift.json` now seeds only the
+> two nodes (samsite-tap#53). The collector's `FETCHES_DOCUMENT` emission below is still to be
+> moved to the verb-node model once computing_core ships it.
+
 - **Static end (seed).** `grift/kev-fetch.grift.json` seeds the `web_host`
-  (`cisa.gov`), the `web_document` (the KEV catalog URL), and the `HOSTS_DOCUMENT`
-  edge from host to document (computing_core v0.4.0 renamed the former document → host
-  edge and flipped its direction). Both endpoints are seeded together, so `HOSTS_DOCUMENT`
-  is always safe. The two nodes use `computing_core`'s web-native types and carry
+  (`cisa.gov`) and the `web_document` (the KEV catalog URL). It used to seed a
+  `HOSTS_DOCUMENT` edge from host to document, now retired. The two nodes use `computing_core`'s web-native types and carry
   the `tap.web: native` marker. Ids are `uuid5` over the compliance collector's
   frozen namespace (`node_entity_id`/`edge_entity_id`), so the seed and the
   collector agree on the catalog's identity.
@@ -322,7 +326,7 @@ github_workflow (deploy) ─FETCHES_DOCUMENT─▶ web_document (CISA KEV catalo
 
 | ACID | Title | Status | Description | Notes |
 | --- | --- | :---: | --- | --- |
-| req-samsite-collector-kev-fetch-1 | Static Nodes Seeded | Proposed | The CISA `web_host`, the KEV `web_document`, and their `HOSTS_DOCUMENT` edge (host → document) are seeded by `kev-fetch.grift.json`. | |
+| req-samsite-collector-kev-fetch-1 | Static Nodes Seeded | Proposed | The CISA `web_host` and the KEV `web_document` are seeded by `kev-fetch.grift.json`. | `HOSTS_DOCUMENT` retired (computing-core#25); removed from the seed (samsite-tap#53). |
 | req-samsite-collector-kev-fetch-2 | FETCHES_DOCUMENT From Deploy Workflow | Proposed | The collector emits a `FETCHES_DOCUMENT` edge from the resolved deploy `github_workflow` to the seeded KEV catalog. | Reuses the `SIGNED_BY_IDENTITY` workflow resolution. |
 | req-samsite-collector-kev-fetch-3 | Resolved Not Minted | Proposed | The collector resolves both edge endpoints; it never mints the KEV catalog node. `FETCHES_DOCUMENT` is omitted (not dangled) when either endpoint is absent. | Mirrors `SIGNED_BY_IDENTITY` / boundary-membership graceful degradation. |
 | req-samsite-collector-kev-fetch-4 | Idempotent | Proposed | The `FETCHES_DOCUMENT` edge id is deterministic (`uuid5` over `edge:FETCHES_DOCUMENT__computing_core:<workflow>-><catalog>`); re-runs upsert rather than duplicate. | |

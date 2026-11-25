@@ -1,6 +1,25 @@
 {
   "metadata": {
-    "grift_version": "0"
+    "grift_version": "1",
+    "spine_version": 1,
+    "type_versions": {
+      "USES_ARRANGEMENT": 1,
+      "USES_DEFAULT_ELEVATION": 1,
+      "USES_ELEVATION": 1,
+      "USES_LAYOUT": 1,
+      "USES_PANEL": 1,
+      "USES_PROJECTION": 1,
+      "USES_SEARCH": 1,
+      "arrangement": 1,
+      "batch": 1,
+      "compliance_core__compliance_boundary": 1,
+      "elevation": 1,
+      "layout": 1,
+      "page": 1,
+      "panel": 1,
+      "projection": 1,
+      "search": 1
+    }
   },
   "_reserved": {},
   "batches": [
@@ -14,7 +33,7 @@
       "batch_node": {
         "source": "plugins.samsite",
         "name": "Samsite landing v0.2.0",
-        "description": "Landing page: cytoscape graph projection of the samsite deployment (account 180731181784). v0.1.5 is the merge of two parallel lines onto one batch: (a) the signed /.well-known/ artifacts on the board — the seed search matches ksi_signal / vdr_report / compliance_artifact, and landing-finalize.js prunes each to the latest snapshot per kind and styles them as file cards; (b) the deploy→KEV-fetch + human-actor story — the search also matches web_host / web_document (CISA host + KEV catalog, kev-fetch.grift.json) and user (the actors george / Sam, users.grift.json; Readers until v0.2.0). web_host / web_document / user / the compliance file types carry no per-model tags, so they are reached by explicit per-label MATCHes (like the GitHub lane), not the Project=samsite tag scan. Fresh batch_entity_id (supersedes both 019e73fb-... and 019e73fe-...) so any session seeded from either parent re-applies the combined search; the skip-if-exists guard is batch-id-keyed. The Rekor entries collapse into a stack (tap_viz stack primitive) in landing-finalize.js. v0.1.7 adds MATCH (gapp:github_core__github_app) so the Dependabot github_app (reclassified from a workflow by the collector) renders — the finalize pass parents it to the github.com platform compound. v0.1.8 existed as two parallel lines on separate branches, reconciled here in v0.1.9: (a) removed four orphaned edges left behind when the samsite-bootstrap-layout + its three samsite-bootstrap-* arrangements were retired (commit 43f0cd8) — the USES_LAYOUT edge into the layout and three USES_ARRANGEMENT edges out of it were never removed and dangled on a fresh seed; (b) added nav_rules to the graph panel config (interpreted generically by tap_viz graph_panel → display.tap_viz.nav_url → single-tap navigation in panel-graph.js): signed artifacts (compliance_artifact by kind / ksi_signal / vdr_report) open their workbench viewer pages pinned by entity_id, and GitHub nodes (repository / account / platform / workflow / app) open their html_url on github.com in a new tab. v0.1.9 merges both with a fresh batch_entity_id superseding 019e7908-... (a) and 019e7e65-... (b) so any grid seeded from either parent re-applies the combined batch. v0.2.0 (samsite-tap#33): the people are identity_core `human` nodes, so the seed search matches MATCH (u:identity_core__human) instead of computing_core `user`, which computing_core retired (computing-core-tap#27). That MATCH is scoped to samsite's own people by the samsite.story = actor dimension (users.grift.json), so another plugin's humans on a shared grid stay off the landing. The Readers node is gone; fresh batch_entity_id so a grid seeded from v0.1.9 re-applies the search."
+        "description": "Landing page: cytoscape graph projection of the samsite deployment (account 180731181784). v0.1.5 is the merge of two parallel lines onto one batch: (a) the signed /.well-known/ artifacts on the board — the seed search matches ksi_signal / vdr_report / compliance_artifact, and landing-finalize.js prunes each to the latest snapshot per kind and styles them as file cards; (b) the deploy→KEV-fetch + human-actor story — the search also matches web_host / web_document (CISA host + KEV catalog, kev-fetch.grift.json) and user (the actors george / Sam, users.grift.json; Readers until v0.2.0). web_host / web_document / user / the compliance file types carry no per-model tags, so they are reached by explicit per-label MATCHes (like the GitHub lane), not the Project=samsite tag scan. Fresh batch_entity_id (supersedes both 019e73fb-... and 019e73fe-...) so any session seeded from either parent re-applies the combined search; the skip-if-exists guard is batch-id-keyed. The Rekor entries collapse into a stack (tap_viz stack primitive) in landing-finalize.js. v0.1.7 adds MATCH (gapp:github_core__github_app) so the Dependabot github_app (reclassified from a workflow by the collector) renders — the finalize pass parents it to the github.com platform compound. v0.1.8 existed as two parallel lines on separate branches, reconciled here in v0.1.9: (a) removed four orphaned edges left behind when the samsite-bootstrap-layout + its three samsite-bootstrap-* arrangements were retired (commit 43f0cd8) — the USES_LAYOUT edge into the layout and three USES_ARRANGEMENT edges out of it were never removed and dangled on a fresh seed; (b) added nav_rules to the graph panel config (interpreted generically by tap_viz graph_panel → display.tap_viz.nav_url → single-tap navigation in panel-graph.js): signed artifacts (compliance_artifact by kind / ksi_signal / vdr_report) open their workbench viewer pages pinned by entity_id, and GitHub nodes (repository / account / platform / workflow / app) open their html_url on github.com in a new tab. v0.1.9 merges both with a fresh batch_entity_id superseding 019e7908-... (a) and 019e7e65-... (b) so any grid seeded from either parent re-applies the combined batch. v0.2.0 (samsite-tap#33): the people are identity_core `human` nodes, so the seed search matches MATCH (u:identity_core__human) instead of computing_core `user`, which computing_core retired (computing-core-tap#27). That MATCH is scoped to samsite's own people by the samsite.story = actor dimension (users.grift.json), so another plugin's humans on a shared grid stay off the landing. The Readers node is gone; fresh batch_entity_id so a grid seeded from v0.1.9 re-applies the search. The landing_page node and its USES_LANDING_PAGE edge are removed: tap retired the type (tap#340), the importer already stripped both at seeding, and the root URL is the boot profile's web.landing_entity_id. Same batch id, since a grid holding this batch never held them."
       },
       "nodes": [
         {
@@ -257,20 +276,6 @@
               }
             },
             "nav_weight": 100
-          }
-        },
-        {
-          "entity": {
-            "entity_id": "e33cba76-4bb6-53d8-aa2b-1c75c48c263c",
-            "entity_type": "landing_page",
-            "name": "Samsite Landing",
-            "dimensions": {
-              "tap.graph": "web"
-            }
-          },
-          "node": {
-            "name": "Samsite Landing",
-            "description": "Default site landing page — Samsite AWS overview (account 180731181784)."
           }
         },
         {
@@ -661,20 +666,6 @@
                 "value": "main"
               }
             }
-          }
-        },
-        {
-          "entity": {
-            "entity_id": "54636bc8-7f06-5ada-a0be-69419835eab3",
-            "entity_type": "edge",
-            "name": "USES_LANDING_PAGE",
-            "dimensions": {}
-          },
-          "edge": {
-            "from_entity_id": "e33cba76-4bb6-53d8-aa2b-1c75c48c263c",
-            "to_entity_id": "9ccaf518-bf6d-5d09-bd77-a0e7c3d839a4",
-            "edge_type": "USES_LANDING_PAGE",
-            "properties": {}
           }
         },
         {
