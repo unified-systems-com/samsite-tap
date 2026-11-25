@@ -3,7 +3,8 @@
 Wraps the per-run node/edge envelopes in the one GRIFT document the collector
 submits via ``CollectorBase.submit_grift``. Mirrors the boto3 collector's
 batch shape (one batch per run, per-run uuid7 batch id, deterministic node/
-edge ids inside).
+edge ids inside), under the GRIFT format "1" header core writes for it
+(``tap_grid.grift.upgrade.build_header``).
 """
 
 from __future__ import annotations
@@ -13,7 +14,6 @@ from collections import Counter
 from datetime import UTC, datetime
 from typing import Any
 
-_GRIFT_VERSION = "0"
 COLLECTION_FORMAT = "tap.samsite.compliance-v0"
 
 
@@ -26,7 +26,13 @@ def assemble_batch(
     edges: list[dict[str, Any]],
     now: datetime | None = None,
 ) -> dict[str, Any]:
-    """Wrap node/edge envelopes in one GRIFT document for one run."""
+    """Wrap node/edge envelopes in one GRIFT document for one run.
+
+    The header is core's format "1" header: the spine version and the version of every type the
+    batch carries, read off the grid, so this needs the database; the collector calls it in a run.
+    """
+    from tap_grid.grift.upgrade import build_header
+
     moment = (now or datetime.now(UTC)).astimezone(UTC)
     now_iso = moment.isoformat().replace("+00:00", "Z")
     label = f"Samsite compliance collection {now_iso}"
@@ -62,8 +68,6 @@ def assemble_batch(
         "nodes": nodes,
         "edges": edges,
     }
-    return {
-        "metadata": {"grift_version": _GRIFT_VERSION},
-        "_reserved": {},
-        "batches": [batch],
-    }
+    document: dict[str, Any] = {"metadata": {}, "_reserved": {}, "batches": [batch]}
+    document["metadata"] = build_header(document)
+    return document
