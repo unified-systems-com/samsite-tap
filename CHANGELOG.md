@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.8](https://github.com/unified-systems-com/samsite-tap/compare/v0.2.7...v0.2.8) (2026-11-25)
+
+
+### Bug Fixes
+
+* **ci:** raise requires_tap floor to 0.4.9 for build_header ([723f695](https://github.com/unified-systems-com/samsite-tap/commit/723f69540bbf1b5af623a50b82d19002103369b4))
+* **grift:** the compliance collector writes core's format "1" header instead of "0" ([c527308](https://github.com/unified-systems-com/samsite-tap/commit/c527308ef2ebc451698db740198c84c4308a71c2))
+* **grift:** the compliance collector writes core's format "1" header instead of "0" ([f01a78c](https://github.com/unified-systems-com/samsite-tap/commit/f01a78c282ff44f774a57977e7663f40dbf4e8a2))
+
 ## [0.2.7](https://github.com/unified-systems-com/samsite-tap/compare/v0.2.6...v0.2.7) (2026-11-25)
 
 
